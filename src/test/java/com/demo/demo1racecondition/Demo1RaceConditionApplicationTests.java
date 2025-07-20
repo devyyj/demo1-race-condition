@@ -91,4 +91,27 @@ class Demo1RaceConditionApplicationTests {
 
         System.out.println(counter.getCount());
     }
+
+    @Test
+    @DisplayName("멀티스레드 환경에서 AtomicCounter 클래스 테스트")
+    void test5() throws InterruptedException {
+        AtomicCounter counter = new AtomicCounter();
+
+        int threadCount = 1000;
+        CountDownLatch latch = new CountDownLatch(threadCount);
+
+        for (int i = 0; i < threadCount; i++) {
+            Thread thread = new Thread(() -> {
+                for (int j = 0; j < 10000; j++) {
+                    counter.increment();
+                }
+                latch.countDown();
+            });
+            thread.start();
+        }
+
+        latch.await();
+
+        System.out.println(counter.getCount());
+    }
 }
