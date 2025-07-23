@@ -1,19 +1,38 @@
-package com.demo.demo1racecondition;
+package com.demo.demo1racecondition.counter;
 
+import com.demo.demo1racecondition.entity.Product;
+import com.demo.demo1racecondition.repository.ProductRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.concurrent.CountDownLatch;
 
 @SpringBootTest
-class Demo1RaceConditionApplicationTests {
+class CounterTests {
+
+    @Autowired
+    private Counter counter;
+
+    @Autowired
+    private SyncCounter syncCounter;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @BeforeEach
+    void setUp() {
+        Product product = new Product();
+        product.setName("item");
+        product.setStock(0L);
+        productRepository.save(product);
+    }
 
     @Test
     @DisplayName("Counter 클래스 테스트")
     void test1() {
-        Counter counter = new Counter();
-
         counter.increment();
         counter.increment();
         counter.increment();
@@ -26,16 +45,14 @@ class Demo1RaceConditionApplicationTests {
     @Test
     @DisplayName("멀티스레드 환경에서 Counter 클래스 테스트")
     void test2() throws InterruptedException {
-        Counter counter = new Counter();
-
-        int threadCount = 1000;
+        int threadCount = 100;
         CountDownLatch latch = new CountDownLatch(threadCount);
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                for (int j = 0; j < 10000; j++) {
-                    counter.increment();
-                }
+//                for (int j = 0; j < 10000; j++) {
+                counter.increment();
+//                }
                 latch.countDown();
             });
             thread.start();
@@ -49,16 +66,12 @@ class Demo1RaceConditionApplicationTests {
     @Test
     @DisplayName("멀티스레드 환경에서 SyncCounter 클래스 테스트")
     void test3() throws InterruptedException {
-        SyncCounter counter = new SyncCounter();
-
-        int threadCount = 1000;
+        int threadCount = 100;
         CountDownLatch latch = new CountDownLatch(threadCount);
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                for (int j = 0; j < 10000; j++) {
-                    counter.increment();
-                }
+                syncCounter.increment();
                 latch.countDown();
             });
             thread.start();

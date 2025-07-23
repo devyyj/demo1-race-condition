@@ -1,4 +1,4 @@
-package com.demo.demo1racecondition;
+package com.demo.demo1racecondition.counter;
 
 import java.util.concurrent.locks.ReentrantLock;
 
