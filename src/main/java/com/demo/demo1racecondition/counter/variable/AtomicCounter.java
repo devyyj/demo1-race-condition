@@ -1,4 +1,4 @@
-package com.demo.demo1racecondition.counter;
+package com.demo.demo1racecondition.counter.variable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
