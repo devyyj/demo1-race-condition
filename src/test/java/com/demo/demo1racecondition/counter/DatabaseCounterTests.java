@@ -44,7 +44,8 @@ public class DatabaseCounterTests {
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                counter.increment();
+//                counter.increment();
+                counter.retryIncrement();
                 latch.countDown();
             });
             thread.start();

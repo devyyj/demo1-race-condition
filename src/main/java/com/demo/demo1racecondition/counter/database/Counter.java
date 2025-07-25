@@ -3,9 +3,9 @@ package com.demo.demo1racecondition.counter.database;
 import com.demo.demo1racecondition.entity.Product;
 import com.demo.demo1racecondition.repository.ProductRepository;
 import jakarta.transaction.Transactional;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
 
 @RequiredArgsConstructor
 @Component
@@ -16,9 +16,20 @@ public class Counter {
 
     private String name;
 
+    public void retryIncrement() {
+        while (true) {
+            try {
+                increment();
+                break;
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+
     public void createItem(String name) {
         this.name = name;
-        Product item = new  Product();
+        Product item = new Product();
         item.setName(name);
         item.setStock(0L);
         productRepository.save(item);
