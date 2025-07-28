@@ -16,7 +16,7 @@ public class Product {
 
     private Long stock;
 
-//    @Version
-//    private Long version;
+    @Version
+    private Long version;
 
 }
