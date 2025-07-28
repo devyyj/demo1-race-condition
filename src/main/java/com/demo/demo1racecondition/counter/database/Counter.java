@@ -16,17 +16,6 @@ public class Counter {
 
     private String name;
 
-    public void retryIncrement() {
-        while (true) {
-            try {
-                increment();
-                break;
-            } catch (Exception e) {
-                System.out.println(e.toString());
-            }
-        }
-    }
-
     public void createItem(String name) {
         this.name = name;
         Product item = new Product();
