@@ -19,14 +19,14 @@ public class CounterService {
         counter.createItem(name);
     }
 
-    public Long getCount() {
-        return counter.getCount();
+    public Long getCount(String name) {
+        return counter.getCount(name);
     }
 
-    public void retryIncrement() {
+    public void retryIncrement(String name) {
         while (true) {
             try {
-                counter.increment();
+                counter.increment(name);
                 break;
             } catch (ObjectOptimisticLockingFailureException e) {
                 System.out.println(e.toString());
@@ -39,8 +39,8 @@ public class CounterService {
             maxAttempts = 3,
             backoff = @Backoff(delay = 200, multiplier = 2)
     )
-    public void maxAttemptsIncrement() {
-                counter.increment();
+    public void maxAttemptsIncrement(String name) {
+                counter.increment(name);
     }
 
     @Recover

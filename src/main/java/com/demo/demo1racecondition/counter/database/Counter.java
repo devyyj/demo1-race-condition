@@ -14,23 +14,20 @@ public class Counter {
 
     private final ProductRepository productRepository;
 
-    private String name;
-
     public void createItem(String name) {
-        this.name = name;
         Product item = new Product();
         item.setName(name);
         item.setStock(0L);
         productRepository.save(item);
     }
 
-    public void increment() {
+    public void increment(String name) {
         Product item = productRepository.findByName(name);
         item.setStock(item.getStock() + 1);
         productRepository.save(item);
     }
 
-    public Long getCount() {
+    public Long getCount(String name) {
         Product item = productRepository.findByName(name);
         return item.getStock();
     }

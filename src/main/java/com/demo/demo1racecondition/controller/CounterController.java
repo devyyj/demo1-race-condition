@@ -21,7 +21,7 @@ public class CounterController {
 
     @PostMapping("/increase")
     public String counter() {
-        counterService.retryIncrement();
+        counterService.retryIncrement("test");
         return "OK";
     }
 

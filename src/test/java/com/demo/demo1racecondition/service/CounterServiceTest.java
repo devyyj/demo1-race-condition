@@ -25,7 +25,7 @@ class CounterServiceTest {
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                counterService.retryIncrement();
+                counterService.retryIncrement("item11");
                 latch.countDown();
             });
             thread.start();
@@ -33,7 +33,7 @@ class CounterServiceTest {
 
         latch.await();
 
-        System.out.println(counterService.getCount());
+        System.out.println(counterService.getCount("item11"));
     }
 
     @Test
@@ -46,7 +46,7 @@ class CounterServiceTest {
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                counterService.maxAttemptsIncrement();
+                counterService.maxAttemptsIncrement("item12");
                 latch.countDown();
             });
             thread.start();
@@ -54,6 +54,6 @@ class CounterServiceTest {
 
         latch.await();
 
-        System.out.println(counterService.getCount());
+        System.out.println(counterService.getCount("item12"));
     }
 }
