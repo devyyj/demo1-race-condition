@@ -12,5 +12,16 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
+  redis:
+    image: redis:7.2.5
+    container_name: redis-local
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: [ "redis-server", "--appendonly", "yes" ]
+    restart: always
+
 volumes:
   mariadb_data:
+  redis-data:

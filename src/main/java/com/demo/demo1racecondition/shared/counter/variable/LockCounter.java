@@ -1,4 +1,4 @@
-package com.demo.demo1racecondition.counter.variable;
+package com.demo.demo1racecondition.shared.counter.variable;
 
 import java.util.concurrent.locks.ReentrantLock;
 

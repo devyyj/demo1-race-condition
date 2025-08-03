@@ -1,9 +1,9 @@
 package com.demo.demo1racecondition.counter;
 
-import com.demo.demo1racecondition.counter.variable.AtomicCounter;
-import com.demo.demo1racecondition.counter.variable.Counter;
-import com.demo.demo1racecondition.counter.variable.LockCounter;
-import com.demo.demo1racecondition.counter.variable.SyncCounter;
+import com.demo.demo1racecondition.shared.counter.variable.AtomicCounter;
+import com.demo.demo1racecondition.shared.counter.variable.Counter;
+import com.demo.demo1racecondition.shared.counter.variable.LockCounter;
+import com.demo.demo1racecondition.shared.counter.variable.SyncCounter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

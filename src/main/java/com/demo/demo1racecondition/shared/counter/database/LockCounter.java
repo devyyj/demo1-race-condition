@@ -1,7 +1,7 @@
-package com.demo.demo1racecondition.counter.database;
+package com.demo.demo1racecondition.shared.counter.database;
 
-import com.demo.demo1racecondition.entity.Product;
-import com.demo.demo1racecondition.repository.ProductRepository;
+import com.demo.demo1racecondition.shared.entity.Product;
+import com.demo.demo1racecondition.shared.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

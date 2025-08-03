@@ -1,7 +1,6 @@
-package com.demo.demo1racecondition.service;
+package com.demo.demo1racecondition.shared.service;
 
-import com.demo.demo1racecondition.counter.database.Counter;
-import jakarta.persistence.OptimisticLockException;
+import com.demo.demo1racecondition.shared.counter.database.Counter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.retry.annotation.Backoff;
@@ -23,12 +22,12 @@ public class CounterService {
         return counter.getCount(name);
     }
 
-    public void retryIncrement(String name) {
+    public void retryDecrease(String name) {
         while (true) {
             try {
-                counter.increment(name);
+                counter.decrease(name);
                 break;
-            } catch (ObjectOptimisticLockingFailureException e) {
+            } catch (Exception e) {
                 System.out.println(e.toString());
             }
         }
@@ -40,7 +39,7 @@ public class CounterService {
             backoff = @Backoff(delay = 200, multiplier = 2)
     )
     public void maxAttemptsIncrement(String name) {
-                counter.increment(name);
+                counter.decrease(name);
     }
 
     @Recover

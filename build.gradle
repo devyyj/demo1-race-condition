@@ -37,6 +37,8 @@ dependencies {
     implementation "p6spy:p6spy:3.9.1"
     // https://mvnrepository.com/artifact/org.springframework.retry/spring-retry
     implementation 'org.springframework.retry:spring-retry:2.0.12'
+    // https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter
+    implementation 'org.redisson:redisson-spring-boot-starter:3.50.0'
 }
 
 tasks.named('test') {

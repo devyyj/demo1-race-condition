@@ -1,4 +1,4 @@
-package com.demo.demo1racecondition.config;
+package com.demo.demo1racecondition.common.config;
 
 import com.p6spy.engine.logging.Category;
 import com.p6spy.engine.spy.appender.P6Logger;

@@ -1,8 +1,8 @@
 package com.demo.demo1racecondition.counter;
 
-import com.demo.demo1racecondition.counter.database.Counter;
-import com.demo.demo1racecondition.counter.database.LockCounter;
-import com.demo.demo1racecondition.counter.database.SyncCounter;
+import com.demo.demo1racecondition.shared.counter.database.Counter;
+import com.demo.demo1racecondition.shared.counter.database.LockCounter;
+import com.demo.demo1racecondition.shared.counter.database.SyncCounter;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,11 +27,11 @@ public class DatabaseCounterTests {
         String item1 = "item1";
         counter.createItem(item1);
 
-        counter.increment(item1);
-        counter.increment(item1);
-        counter.increment(item1);
-        counter.increment(item1);
-        counter.increment(item1);
+        counter.decrease(item1);
+        counter.decrease(item1);
+        counter.decrease(item1);
+        counter.decrease(item1);
+        counter.decrease(item1);
 
         System.out.println(counter.getCount(item1));
     }
@@ -47,7 +47,7 @@ public class DatabaseCounterTests {
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                counter.increment("item2");
+                counter.decrease("item2");
                 latch.countDown();
             });
             thread.start();

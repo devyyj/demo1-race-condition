@@ -1,13 +1,12 @@
 package com.demo.demo1racecondition.service;
 
+import com.demo.demo1racecondition.shared.service.CounterService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.concurrent.CountDownLatch;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class CounterServiceTest {
@@ -25,7 +24,7 @@ class CounterServiceTest {
 
         for (int i = 0; i < threadCount; i++) {
             Thread thread = new Thread(() -> {
-                counterService.retryIncrement("item11");
+                counterService.retryDecrease("item11");
                 latch.countDown();
             });
             thread.start();

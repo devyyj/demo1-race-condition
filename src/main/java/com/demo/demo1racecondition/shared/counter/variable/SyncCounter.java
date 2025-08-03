@@ -1,4 +1,4 @@
-package com.demo.demo1racecondition.counter.variable;
+package com.demo.demo1racecondition.shared.counter.variable;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

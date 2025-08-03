@@ -1,4 +1,4 @@
-package com.demo.demo1racecondition.entity;
+package com.demo.demo1racecondition.shared.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

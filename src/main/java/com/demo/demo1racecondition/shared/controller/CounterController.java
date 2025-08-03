@@ -1,6 +1,6 @@
-package com.demo.demo1racecondition.controller;
+package com.demo.demo1racecondition.shared.controller;
 
-import com.demo.demo1racecondition.service.CounterService;
+import com.demo.demo1racecondition.shared.service.CounterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +19,9 @@ public class CounterController {
         return "OK";
     }
 
-    @PostMapping("/increase")
+    @PostMapping("/decrease")
     public String counter() {
-        counterService.retryIncrement("test");
+        counterService.retryDecrease("test");
         return "OK";
     }
 
