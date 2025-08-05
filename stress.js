@@ -2,7 +2,7 @@ import http from 'k6/http';
 
 // 옵션 정의
 export const options = {
-  vus: 1000,
+  vus: 100,
   iterations: 1000,
 };
 
@@ -10,6 +10,6 @@ export const options = {
 export default function () {
   http.batch([
     ['POST', 'http://localhost:8080/variable/decrease'],
-    ['POST', 'http://localhost:8081/variable/decrease'],
+    // ['POST', 'http://localhost:8081/variable/decrease'],
   ]);
 }

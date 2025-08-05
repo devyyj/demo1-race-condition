@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SharedVariableController {
 
     private final SharedVariableService sharedVariableService;
+    private final SharedVariableSyncService  sharedVariableSyncService;
 
     @PostMapping("/decrease")
     public String decrease(){
+//        sharedVariableSyncService.decreaseQuantity();
         sharedVariableService.decreaseQuantity();
         return "Success!";
     }

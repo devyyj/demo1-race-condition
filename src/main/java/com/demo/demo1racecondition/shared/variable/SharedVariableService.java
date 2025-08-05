@@ -10,8 +10,8 @@ public class SharedVariableService {
 
     private final SharedValueRepository sharedValueRepository;
 
-//    @Transactional
-    public synchronized void decreaseQuantity() {
+    @Transactional
+    public void decreaseQuantity() {
         SharedVariable variable = sharedValueRepository.findById(1L).get();
         variable.setQuantity(variable.getQuantity() - 1);
         sharedValueRepository.save(variable);
