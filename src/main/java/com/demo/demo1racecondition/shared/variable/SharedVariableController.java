@@ -12,11 +12,23 @@ public class SharedVariableController {
 
     private final SharedVariableService sharedVariableService;
     private final SharedVariableSyncService  sharedVariableSyncService;
+    private final SharedVariableReLockService sharedVariableReLockService;
 
     @PostMapping("/decrease")
     public String decrease(){
-//        sharedVariableSyncService.decreaseQuantity();
         sharedVariableService.decreaseQuantity();
+        return "Success!";
+    }
+
+    @PostMapping("/sync-decrease")
+    public String syncDecrease(){
+        sharedVariableSyncService.decreaseQuantity();
+        return "Success!";
+    }
+
+    @PostMapping("/lock-decrease")
+    public String lockDecrease(){
+        sharedVariableReLockService.decreaseQuantity();
         return "Success!";
     }
 

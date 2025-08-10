@@ -11,5 +11,11 @@ export default function () {
   http.batch([
     ['POST', 'http://localhost:8080/variable/decrease'],
     // ['POST', 'http://localhost:8081/variable/decrease'],
+
+    // ['POST', 'http://localhost:8080/variable/sync-decrease'],
+    // ['POST', 'http://localhost:8081/variable/sync-decrease'],
+    //
+    // ['POST', 'http://localhost:8080/variable/lock-decrease'],
+    // ['POST', 'http://localhost:8081/variable/lock-decrease'],
   ]);
 }
